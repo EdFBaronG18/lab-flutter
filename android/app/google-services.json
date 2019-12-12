@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "334557453340",
+    "firebase_url": "https://laboratorio-d016b.firebaseio.com",
+    "project_id": "laboratorio-d016b",
+    "storage_bucket": "laboratorio-d016b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334557453340:android:e91232032009634a5913d9",
+        "android_client_info": {
+          "package_name": "com.example.laboratorio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334557453340-42drs8p95upgufnlnog9ggofrbat72t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqtS8wSdOk81EzTjhSnujhG1Sf-4rL9oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334557453340-42drs8p95upgufnlnog9ggofrbat72t0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334557453340:android:39cdb709342de6765913d9",
+        "android_client_info": {
+          "package_name": "com.lab.mbaas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "334557453340-42drs8p95upgufnlnog9ggofrbat72t0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqtS8wSdOk81EzTjhSnujhG1Sf-4rL9oo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "334557453340-42drs8p95upgufnlnog9ggofrbat72t0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
