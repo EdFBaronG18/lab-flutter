@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'dart:io' show Platform;
 
 void main() => runApp(MyApp());
 
@@ -31,7 +33,33 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
-  final FirebaseDatabase db = FirebaseDatabase.instance;
+
+  FirebaseApp app;
+  DatabaseReference usuariosRef;
+
+  void initState() {
+    iniciarApp();
+  }
+
+  void iniciarApp() async {
+    app = await FirebaseApp.configure(
+      name: 'db2',
+      options: Platform.isIOS
+          ? const FirebaseOptions(
+              googleAppID: '1:297855924061:ios:c6de2b69b03a5be8',
+              gcmSenderID: '297855924061',
+              databaseURL: 'https://laboratorio-d016b.firebaseio.com/',
+            )
+          : const FirebaseOptions(
+              googleAppID: '1:334557453340:android:39cdb709342de6765913d9',
+              apiKey: 'AIzaSyC3MUQrvyb-sKrK4Br2PTkct-4aCgyKD80',
+              databaseURL: 'https://laboratorio-d016b.firebaseio.com/',
+            ),
+    );
+    final FirebaseDatabase db = FirebaseDatabase(app: app);
+    usuariosRef = db.reference().child('usuarios');
+    db.setPersistenceEnabled(true);
+  }
 
   final formKey = GlobalKey<FormState>();
   String email = '';
