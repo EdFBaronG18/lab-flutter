@@ -85,7 +85,8 @@ class _MyHomePageState extends State<MyHomePage> {
       usuariosRef.push().set(<String, String>{
         'nombre': this.nombre,
         'apellido': this.apellido,
-        'email': this.email2
+        'email': this.email2,
+        'idUser': user.uid
       });
     } catch (e) {
       print(e);
