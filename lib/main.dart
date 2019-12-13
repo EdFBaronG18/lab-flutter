@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'dart:io' show Platform;
+import 'dart:async';
 
 void main() => runApp(MyApp());
 
@@ -32,14 +33,22 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final FirebaseAuth auth = FirebaseAuth.instance;
+  final formKey = GlobalKey<FormState>();
+  String email = '';
+  String pass = '';
 
+  final formKey2 = GlobalKey<FormState>();
+  String email2 = '';
+  String pass2 = '';
+  String nombre = '';
+  String apellido = '';
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseApp app;
   DatabaseReference usuariosRef;
 
-  void initState() {
-    iniciarApp();
-  }
+  StreamSubscription<Event> _counterSubscription;
+  StreamSubscription<Event> _messagesSubscription;
 
   void iniciarApp() async {
     app = await FirebaseApp.configure(
@@ -61,15 +70,10 @@ class _MyHomePageState extends State<MyHomePage> {
     db.setPersistenceEnabled(true);
   }
 
-  final formKey = GlobalKey<FormState>();
-  String email = '';
-  String pass = '';
-
-  final formKey2 = GlobalKey<FormState>();
-  String email2 = '';
-  String pass2 = '';
-  String nombre = '';
-  String apellido = '';
+  @override
+  void initState() {
+    iniciarApp();
+  }
 
   void createUser() async {
     try {
@@ -78,6 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
               email: this.email2, password: this.pass2))
           .user;
       print('Creando usuario..');
+      usuariosRef.push().set(<String, String>{
+        'nombre': this.nombre,
+        'apellido': this.apellido,
+        'email': this.email2
+      });
     } catch (e) {
       print(e);
       print('ERROR!');
@@ -166,14 +175,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           contentPadding: const EdgeInsets.all(20.0)),
                     ),
                     TextFormField(
-                      obscureText: true,
+                      obscureText: false,
                       onSaved: (value) => this.nombre = value,
                       decoration: InputDecoration(
                           labelText: 'Nombre',
                           contentPadding: const EdgeInsets.all(20.0)),
                     ),
                     TextFormField(
-                      obscureText: true,
+                      obscureText: false,
                       onSaved: (value) => this.apellido = value,
                       decoration: InputDecoration(
                           labelText: 'Apellido',
