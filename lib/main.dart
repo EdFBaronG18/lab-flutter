@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseDatabase db = FirebaseDatabase.instance;
 
   final formKey = GlobalKey<FormState>();
   String email = '';
@@ -37,6 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final formKey2 = GlobalKey<FormState>();
   String email2 = '';
   String pass2 = '';
+  String nombre = '';
+  String apellido = '';
 
   void createUser() async {
     try {
@@ -130,6 +135,20 @@ class _MyHomePageState extends State<MyHomePage> {
                       onSaved: (value) => this.pass2 = value,
                       decoration: InputDecoration(
                           labelText: 'Contraseña',
+                          contentPadding: const EdgeInsets.all(20.0)),
+                    ),
+                    TextFormField(
+                      obscureText: true,
+                      onSaved: (value) => this.nombre = value,
+                      decoration: InputDecoration(
+                          labelText: 'Nombre',
+                          contentPadding: const EdgeInsets.all(20.0)),
+                    ),
+                    TextFormField(
+                      obscureText: true,
+                      onSaved: (value) => this.apellido = value,
+                      decoration: InputDecoration(
+                          labelText: 'Apellido',
                           contentPadding: const EdgeInsets.all(20.0)),
                     ),
                     RaisedButton(
