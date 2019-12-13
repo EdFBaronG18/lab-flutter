@@ -55,14 +55,19 @@ class _MyHomePageState extends State<MyHomePage> {
       name: 'db2',
       options: Platform.isIOS
           ? const FirebaseOptions(
-              googleAppID: '1:297855924061:ios:c6de2b69b03a5be8',
-              gcmSenderID: '297855924061',
-              databaseURL: 'https://laboratorio-d016b.firebaseio.com/',
+              googleAppID:
+                  '1:297855924061:ios:c6de2b69b03a5be8', // Cambiar a datos de su Firebase
+              gcmSenderID: '297855924061', // Cambiar a datos de su Firebase
+              databaseURL:
+                  'https://laboratorio-d016b.firebaseio.com/', // Cambiar a datos de su Firebase
             )
           : const FirebaseOptions(
-              googleAppID: '1:334557453340:android:39cdb709342de6765913d9',
-              apiKey: 'AIzaSyC3MUQrvyb-sKrK4Br2PTkct-4aCgyKD80',
-              databaseURL: 'https://laboratorio-d016b.firebaseio.com/',
+              googleAppID:
+                  '1:334557453340:android:39cdb709342de6765913d9', // Cambiar a datos de su Firebase
+              apiKey:
+                  'AIzaSyC3MUQrvyb-sKrK4Br2PTkct-4aCgyKD80', // Cambiar a datos de su Firebase
+              databaseURL:
+                  'https://laboratorio-d016b.firebaseio.com/', // Cambiar a datos de su Firebase
             ),
     );
     final FirebaseDatabase db = FirebaseDatabase(app: app);
